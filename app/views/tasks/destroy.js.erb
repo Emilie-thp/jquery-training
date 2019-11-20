@@ -1,0 +1,5 @@
+$(document).ready(function() {
+  $("#task-"+ <%= @task.id %>).fadeOut("slow", function(){
+    $(this).remove();
+  });
+});
