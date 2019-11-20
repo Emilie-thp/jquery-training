@@ -1,5 +1,12 @@
-$(document).ready(function() {
-  $("#task-"+ <%= @task.id %>).fadeOut("slow", function(){
+
+//AVEC JQUERY
+/*$(document).ready(function() {
+  $("#task_"+ <%= @task.id %>).fadeOut("slow", function(){
     $(this).remove();
   });
-});
+}); */
+
+
+//SANS JQUERY
+var deletedTask = document.getElementById("task_<%= @task.id %>");
+deletedTask.parentNode.removeChild(deletedTask);
