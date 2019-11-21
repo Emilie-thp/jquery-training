@@ -1,0 +1,5 @@
+    <tr id="email_<%= email.id%>">
+      <th scope="row"><%= email.id %></th>
+      <td id="<%=email.id%>"><%= link_to email.object, email_path(email.id), :remote => :true %> 
+      <td></td>
+    </tr>

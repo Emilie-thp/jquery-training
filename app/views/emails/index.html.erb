@@ -1,0 +1,35 @@
+<h1 align="center">Bienvenue dans votre boîte mail</h1>
+</br>
+
+<div class="container">
+
+	 <%= link_to emails_path, :action => :create, :method => :post, :remote => :true do %>
+	 		<input class="btn btn-primary float" type="submit" value="Recevoir un email">
+	 <%end%>
+
+</br>
+</br>
+</br>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Liste des emails</th>
+      <th scope="col">Email sélectionné</th>
+    </tr>
+  </thead>
+  <tbody>
+  	 <% @emails.each do |email|  %>
+		    <tr id="email_<%= email.id%>">
+		      <th scope="row"><%= email.id %></th>
+		      <td id="<%=email.id%>"><%= link_to email.object, email_path(email.id), :remote => :true %> 
+		      </td>
+		      <td></td>
+		    </tr>
+     <% end %>
+
+
+  </tbody>
+</table>
+</div>

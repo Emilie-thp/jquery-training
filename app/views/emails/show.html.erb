@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="card">
+    <h4 class="card-header">
+      OBJET : <%= @email.object %>
+    </h4>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p><%= @email.body %></p>
+        <footer class="blockquote-footer">Email n°<%=@email.id%> </footer>
+      </blockquote>
+    </div>
+  </div>
+</div>
