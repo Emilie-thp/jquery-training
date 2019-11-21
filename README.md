@@ -1,24 +1,13 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Voici le lien pour l'application : https://gmail-thp.herokuapp.com/
 
-Things you may want to cover:
+Pour tester l'application en local :
 
-* Ruby version
+* télécharge/clone le repo
+* bundle install
+* rails db:drop db:create db:migrate db:seed
+* lance le serveur : rails s
+* ouvre une page de ton navigateur et entre l'adresse : http://localhost:3000/
 
-* System dependencies
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
