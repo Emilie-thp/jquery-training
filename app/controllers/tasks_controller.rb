@@ -8,14 +8,19 @@ before_action :authenticate_user!
     @task = Task.new(task_params)
     @category = Category.find(category_params)
     @task.category = @category
-    if @task.save
-      redirect_to root_path
-      flash[:notice] = "Task created"
-    else
-      redirect_to root_path
-      flash[:notice] = "Please try again"
-    end
+      if @task.save
+        respond_to do |format|
+          format.html { redirect_to root_path, flash[:notice] = "Task created"}
+          format.js {}
+        end
+      else
+        redirect_to root_path
+        flash[:notice] = "Please try again"
+      end
   end
+
+
+
 
   def edit
     @task = Task.find(params[:id])
@@ -23,12 +28,28 @@ before_action :authenticate_user!
 
   end
 
-  def update
-    @task = Task.find(params[:id])
-    @task.update(task_params)
-    redirect_to tasks_path
-    flash[:notice] = "Task edited"
-  end
+def update
+    puts "*"*50
+    puts params
+    puts "*"*50
+    if params[:checkbox] = 1
+      @task = Task.find(params[:id])
+      @task.status = params[:status]
+      if @task.save
+        respond_to do |format|
+          format.html { redirect_to root_path }
+          format.js { }
+          flash[:notice] = "Task edited"
+        end
+      else
+       @task = Task.find(params[:id])
+       @task.update(params)
+       redirect_to root_path
+       flash[:notice] = "Task edited"
+     end
+   end
+ end
+
 
   def index
     @tasks = Task.all
@@ -37,7 +58,12 @@ before_action :authenticate_user!
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to root_path
+    
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js {}
+    end
+
   end
 
 
